@@ -48,14 +48,12 @@ trait RestRoutes extends BoxOfficeApi with EventMarshalling{
             }
           }
         } ~
-
         get{
           // GET /events/:event
           onSuccess(getEvent(event)){
             _.fold(complete(NotFound))(e => complete(OK, e))
           }
         } ~
-
         delete{
           // DELETE /events/:event
           onSuccess(cancelEvent(event)){
